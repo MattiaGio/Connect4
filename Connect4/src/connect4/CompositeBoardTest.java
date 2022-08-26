@@ -107,7 +107,7 @@ public class CompositeBoardTest extends JFrame {
                 }
             }
         }
-
+//commento di prova
         public void actionPerformed( ActionEvent e ) {
             if ( addingPiece != null ) {
                 addingPiece.y += 5;
