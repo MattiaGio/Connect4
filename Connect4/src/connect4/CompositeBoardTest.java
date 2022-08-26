@@ -105,7 +105,7 @@ public class CompositeBoardTest extends JFrame {
                     getToolkit().beep();
                 }
             }
-        }
+        }//
 
         public void actionPerformed( ActionEvent e ) {
             if ( addingPiece != null ) {
