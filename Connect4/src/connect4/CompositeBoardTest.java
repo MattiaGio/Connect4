@@ -119,7 +119,7 @@ public class CompositeBoardTest extends JFrame {
             }
             repaint();
         }
-    }
+    }//
  
     private static class Piece {
         public int row, column, x, y;
