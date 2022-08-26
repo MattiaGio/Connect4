@@ -24,8 +24,9 @@ public class CompositeBoardTest extends JFrame {
 
         Board board = new Board();
         getContentPane().add( board );
-        setSize( size, size+34 );
+        setSize( size-90, size+34 );
         setVisible( true );
+        setResizable(false);
     }
 
     static class Board extends JPanel implements ActionListener {
@@ -36,7 +37,7 @@ public class CompositeBoardTest extends JFrame {
         public Board() {
             setPreferredSize( new Dimension( size, size ) );
             setBounds( 0, 0, size, size );
-            pieceDropped = new Timer( 5, this );
+            pieceDropped = new Timer( 1, this );
             addMouseListener( new MouseAdapter() {
                 public void mousePressed( MouseEvent e ) {
                     int column = ( e.getPoint().x-pos )/incr;
@@ -72,7 +73,7 @@ public class CompositeBoardTest extends JFrame {
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
                     if ( pieces[row][column] == 1 ) {
-                        gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, .1f ) );
+                        gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, .8f ) );
                     } else {
                         gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.CLEAR, 0.5f ) );
                     }
@@ -105,7 +106,7 @@ public class CompositeBoardTest extends JFrame {
                     getToolkit().beep();
                 }
             }
-        }//
+        }
 
         public void actionPerformed( ActionEvent e ) {
             if ( addingPiece != null ) {
@@ -120,7 +121,7 @@ public class CompositeBoardTest extends JFrame {
             repaint();
         }
     }
- //
+
     private static class Piece {
         public int row, column, x, y;
     }
