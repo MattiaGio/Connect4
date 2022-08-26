@@ -17,7 +17,7 @@ public class CompositeBoardTest extends JFrame {
             public void run() { new CompositeBoardTest(); }
         } );
     }
-
+//
     public CompositeBoardTest() {
         super( "CompositeBoardTest" );
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
