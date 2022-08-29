@@ -5,16 +5,19 @@ import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import javax.swing.*;
 
+
 public class CompositeBoardTest extends JFrame {
     private static int size = 650;
     private static int offset = 10;
     private static int ovalSize = size/7 - offset*2;
     private static int pos = offset/2;
     private static int incr = size/7;
+    
 
     public static void main( String[] args ) throws Exception {
         SwingUtilities.invokeLater( new Runnable() {
             public void run() { new CompositeBoardTest(); }
+            
         } );
     }
 //
@@ -22,13 +25,19 @@ public class CompositeBoardTest extends JFrame {
         super( "CompositeBoardTest" );
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-
+        
         Board board = new Board();
         getContentPane().add( board );
+//<<<<<<< HEAD
         board.setLayout(null);
         setSize( size-90, size+34 );
+//=======
+        setSize( 560, 683 );
+//>>>>>>> branch 'main' of https://github.com/MattiaGio/Connect4.git
         setVisible( true );
         setResizable(false);
+        setLocationRelativeTo( null );
+        
     }
 
     static class Board extends JPanel implements ActionListener {
@@ -44,6 +53,7 @@ public class CompositeBoardTest extends JFrame {
                 public void mousePressed( MouseEvent e ) {
                     int column = ( e.getPoint().x-pos )/incr;
                     addPiece( column );
+                   
                 }
             });
         }
@@ -62,16 +72,16 @@ public class CompositeBoardTest extends JFrame {
             Graphics2D gbi = buffImg.createGraphics();
 
             // Clear area
-            g2d.setColor( Color.WHITE );
+            g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
             g2d.fillRect( 0, 0, w, h );
 
             // Draw screen
-          //  gbi.setColor( Color.YELLOW );
-            gbi.setColor( Color.BLUE );
+            //gbi.setColor( Color.YELLOW );
+            gbi.setColor( Color.BLUE ); //CAMBIA IL COLORE DELLA GRIGLIA
             gbi.fillRect( 0, 0, w, h );
 
             // Draw pieces or holes
-            gbi.setColor( Color.RED );
+            gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
                     if ( pieces[row][column] == 1 ) {
@@ -106,6 +116,7 @@ public class CompositeBoardTest extends JFrame {
                     pieceDropped.start();
                 } else {
                     getToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "COLONNA PIENA");
                 }
             }
         }

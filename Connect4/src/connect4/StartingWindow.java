@@ -13,6 +13,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
+import javax.swing.JPanel;
 
 
 
@@ -23,6 +24,7 @@ public class StartingWindow implements ActionListener{
 	private JTextField NamePlayer2;
 	private JButton StartGameBtn;
 
+	
 	/**
 	 * Launch the application.
 	 */
@@ -32,6 +34,7 @@ public class StartingWindow implements ActionListener{
 				try {
 					StartingWindow window = new StartingWindow();
 					window.frmConnect.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,15 +53,23 @@ public class StartingWindow implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmConnect = new JFrame();
-		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\hggfhhgfgfh.jpg"));
+		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		frmConnect.setTitle("Connect4");
-		frmConnect.setBounds(100, 100, 615, 508);
+		frmConnect.setBounds(100, 100, 560, 683);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmConnect.getContentPane().setLayout(null);
+		frmConnect.setLocationRelativeTo( null );
+		
+		JLabel Player2Label = new JLabel("Player 2:");
+		Player2Label.setForeground(new Color(0, 255, 0));
+		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Player2Label.setBounds(194, 241, 59, 14);
+		frmConnect.getContentPane().add(Player2Label);
 		
 		StartGameBtn = new JButton("New Game");
-		StartGameBtn.setBounds(238, 413, 122, 45);
+		StartGameBtn.setBounds(211, 465, 122, 45);
 		frmConnect.getContentPane().add(StartGameBtn);
 		StartGameBtn.setFocusable(false);
 		StartGameBtn.addActionListener(this);
@@ -80,16 +91,16 @@ public class StartingWindow implements ActionListener{
 		Player1Label.setBounds(194, 202, 59, 14);
 		frmConnect.getContentPane().add(Player1Label);
 		
-		JLabel Player2Label = new JLabel("Player 2:");
-		Player2Label.setForeground(new Color(0, 255, 0));
-		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
-		Player2Label.setBounds(194, 241, 59, 14);
-		frmConnect.getContentPane().add(Player2Label);
+
+		JPanel panel = new JPanel();
+		panel.setLayout(null);
+		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		label.setBounds(0, 0, 544, 644);
+		panel.add(label);
+		panel.setBounds(0, 0, 544, 644);
+		frmConnect.getContentPane().add(panel);
 		
-		JLabel BackgroundLabel = new JLabel("New label");
-		BackgroundLabel.setIcon(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\hggfhhgfgfh.jpg"));
-		BackgroundLabel.setBounds(0, 0, 599, 469);
-		frmConnect.getContentPane().add(BackgroundLabel);
+		
 	}
 
 	@Override
