@@ -20,10 +20,12 @@ public class CompositeBoardTest extends JFrame {
 //
     public CompositeBoardTest() {
         super( "CompositeBoardTest" );
+        setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
         setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
         Board board = new Board();
         getContentPane().add( board );
+        board.setLayout(null);
         setSize( size-90, size+34 );
         setVisible( true );
         setResizable(false);
@@ -37,7 +39,7 @@ public class CompositeBoardTest extends JFrame {
         public Board() {
             setPreferredSize( new Dimension( size, size ) );
             setBounds( 0, 0, size, size );
-            pieceDropped = new Timer( 1, this );
+            pieceDropped = new Timer( 3, this );
             addMouseListener( new MouseAdapter() {
                 public void mousePressed( MouseEvent e ) {
                     int column = ( e.getPoint().x-pos )/incr;
