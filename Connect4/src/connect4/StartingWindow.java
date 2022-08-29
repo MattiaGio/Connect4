@@ -10,15 +10,18 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.Font;
 
 
 
-public class StartingWindow {
+public class StartingWindow implements ActionListener{
 
 	private JFrame frmConnect;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField NamePlayer1;
+	private JTextField NamePlayer2;
+	private JButton StartGameBtn;
 
 	/**
 	 * Launch the application.
@@ -54,36 +57,50 @@ public class StartingWindow {
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmConnect.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("New Game");
-		btnNewButton.setBounds(238, 413, 122, 45);
-		frmConnect.getContentPane().add(btnNewButton);
+		StartGameBtn = new JButton("New Game");
+		StartGameBtn.setBounds(238, 413, 122, 45);
+		frmConnect.getContentPane().add(StartGameBtn);
+		StartGameBtn.setFocusable(false);
+		StartGameBtn.addActionListener(this);
 		
-		textField = new JTextField();
-		textField.setBounds(263, 196, 139, 20);
-		frmConnect.getContentPane().add(textField);
-		textField.setColumns(10);
+		NamePlayer1 = new JTextField();
+		NamePlayer1.setBounds(263, 196, 139, 20);
+		frmConnect.getContentPane().add(NamePlayer1);
+		NamePlayer1.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(263, 239, 139, 20);
-		frmConnect.getContentPane().add(textField_1);
+		NamePlayer2 = new JTextField();
+		NamePlayer2.setColumns(10);
+		NamePlayer2.setBounds(263, 239, 139, 20);
+		frmConnect.getContentPane().add(NamePlayer2);
 		
-		JLabel lblNewLabel_1 = new JLabel("Player 1:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_1.setBackground(new Color(255, 0, 255));
-		lblNewLabel_1.setForeground(new Color(0, 0, 255));
-		lblNewLabel_1.setBounds(194, 202, 59, 14);
-		frmConnect.getContentPane().add(lblNewLabel_1);
+		JLabel Player1Label = new JLabel("Player 1:");
+		Player1Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Player1Label.setBackground(new Color(255, 0, 255));
+		Player1Label.setForeground(new Color(0, 0, 255));
+		Player1Label.setBounds(194, 202, 59, 14);
+		frmConnect.getContentPane().add(Player1Label);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Player 2:");
-		lblNewLabel_1_1.setForeground(new Color(0, 255, 0));
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 13));
-		lblNewLabel_1_1.setBounds(194, 241, 59, 14);
-		frmConnect.getContentPane().add(lblNewLabel_1_1);
+		JLabel Player2Label = new JLabel("Player 2:");
+		Player2Label.setForeground(new Color(0, 255, 0));
+		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Player2Label.setBounds(194, 241, 59, 14);
+		frmConnect.getContentPane().add(Player2Label);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\hggfhhgfgfh.jpg"));
-		lblNewLabel.setBounds(0, 0, 599, 469);
-		frmConnect.getContentPane().add(lblNewLabel);
+		JLabel BackgroundLabel = new JLabel("New label");
+		BackgroundLabel.setIcon(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\hggfhhgfgfh.jpg"));
+		BackgroundLabel.setBounds(0, 0, 599, 469);
+		frmConnect.getContentPane().add(BackgroundLabel);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		frmConnect.dispose();
+		
+		if(e.getSource()==StartGameBtn) {
+			
+			CompositeBoardTest myBoard = new CompositeBoardTest();
+		}
+		
 	}
 }
