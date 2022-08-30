@@ -58,7 +58,7 @@ public class CompositeBoardTest {
         public Board() {
             setPreferredSize( new Dimension( size, size ) );
             setBounds( 0, 0, size, size );
-            pieceDropped = new Timer( 3, this );
+            pieceDropped = new Timer( 2, this );
             
             addMouseListener( new MouseAdapter() {
                 public void mousePressed( MouseEvent e ) {
@@ -155,7 +155,7 @@ public class CompositeBoardTest {
                     pieceDropped.start();
                 } else {
                     getToolkit().beep();
-                    JOptionPane.showMessageDialog(null, "COLONNA PIENA");
+                    JOptionPane.showMessageDialog(null, "FULL COLUMN", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }
@@ -165,7 +165,7 @@ public class CompositeBoardTest {
     			JOptionPane.showMessageDialog(null, "Connect4 Game: v.1.0 \nMade by: JvckDL & MattiaGio", "About", JOptionPane.INFORMATION_MESSAGE);
     		}
         	if(e.getSource()==exitItem) {
-    			JOptionPane.showMessageDialog(null, "You will exit the game without saving", "Exit", JOptionPane.ERROR_MESSAGE);
+    			JOptionPane.showOptionDialog(CompositeBoardTest, "You will exit the game without saving\nDo you want to continue?", "Exit", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
     			CompositeBoardTest.dispose();
         	}
             if ( addingPiece != null ) {

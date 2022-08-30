@@ -73,41 +73,10 @@ public class StartingWindow implements ActionListener{
 		frmConnect.getContentPane().setLayout(null);
 		frmConnect.setLocationRelativeTo( null );
 		frmConnect.setBackground(Color.YELLOW);
-
-		
-		
-		JLabel Player2Label = new JLabel("Player 2:");
-		Player2Label.setForeground(new Color(0, 255, 0));
-		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
-		Player2Label.setBounds(194, 241, 59, 14);
-		frmConnect.getContentPane().add(Player2Label);
-		
-		NamePlayer1 = new JTextField();
-		NamePlayer1.setBounds(263, 196, 139, 20);
-		frmConnect.getContentPane().add(NamePlayer1);
-		NamePlayer1.setColumns(10);
-		
-		NamePlayer2 = new JTextField();
-		NamePlayer2.setColumns(10);
-		NamePlayer2.setBounds(263, 239, 139, 20);
-		frmConnect.getContentPane().add(NamePlayer2);
-		
-		JLabel Player1Label = new JLabel("Player 1:");
-		Player1Label.setFont(new Font("Tahoma", Font.BOLD, 13));
-		Player1Label.setBackground(new Color(255, 0, 255));
-		Player1Label.setForeground(new Color(0, 0, 255));
-		Player1Label.setBounds(194, 202, 59, 14);
-		frmConnect.getContentPane().add(Player1Label);
 		
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(null);
-		panel_1.setBackground(Color.LIGHT_GRAY);
-		panel_1.setBounds(181, 180, 227, 92);
-		panel.add(panel_1);
 		
 		JButton loadGameButton = new JButton("Load Game");
 		loadGameButton.setBounds(294, 489, 122, 45);
@@ -119,6 +88,31 @@ public class StartingWindow implements ActionListener{
 		panel.add(StartGameBtn);
 		StartGameBtn.setFocusable(false);
 		StartGameBtn.addActionListener(this);
+		
+		JLabel Player1Label = new JLabel("Player 1:");
+		Player1Label.setBounds(173, 223, 59, 14);
+		panel.add(Player1Label);
+		Player1Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		Player1Label.setBackground(new Color(255, 0, 255));
+		Player1Label.setForeground(new Color(0, 0, 255));
+		
+				
+				
+				JLabel Player2Label = new JLabel("Player 2:");
+				Player2Label.setBounds(173, 260, 59, 14);
+				panel.add(Player2Label);
+				Player2Label.setForeground(new Color(0, 255, 0));
+				Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		
+		NamePlayer2 = new JTextField();
+		NamePlayer2.setBounds(242, 258, 139, 20);
+		panel.add(NamePlayer2);
+		NamePlayer2.setColumns(10);
+		
+		NamePlayer1 = new JTextField();
+		NamePlayer1.setBounds(242, 221, 139, 20);
+		panel.add(NamePlayer1);
+		NamePlayer1.setColumns(10);
 		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
