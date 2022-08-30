@@ -13,6 +13,7 @@ public class CompositeBoardTest {
     private static int pos = offset/2;
     private static int incr = size/7;
     private static JFrame CompositeBoardTest;
+    //private static JPanel Board;
     private static JMenuBar menuBar;
     private static JMenuItem saveItem;
     private static JMenuItem loadItem;
@@ -48,21 +49,24 @@ public class CompositeBoardTest {
         
     }
 
-    static class Board extends JPanel implements ActionListener {
-        private int[][] pieces = new int[7][6];
-        private Piece addingPiece = null;
-        private Timer pieceDropped = null;
+
+	static class Board extends JPanel implements ActionListener {
+        protected int[][] pieces = new int[7][6];
+        protected Piece addingPiece = null;
+        protected Timer pieceDropped = null;
 
         public Board() {
             setPreferredSize( new Dimension( size, size ) );
             setBounds( 0, 0, size, size );
             pieceDropped = new Timer( 3, this );
+            
             addMouseListener( new MouseAdapter() {
                 public void mousePressed( MouseEvent e ) {
                     int column = ( e.getPoint().x-pos )/incr;
                     addPiece( column );
                    
                 }
+
             });
             
             menuBar = new JMenuBar();
@@ -118,16 +122,17 @@ public class CompositeBoardTest {
             gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
+                	//DISCS COLOR
                     if ( pieces[row][column] == 1 ) {
-                        gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, .8f ) );
-                    } else {
+                        gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, .999f ) );
+                    } else {//FILLS THE WHITE HOLES
                         gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.CLEAR, 0.5f ) );
                     }
                     gbi.fillOval( incr*column+pos, incr*row+pos, ovalSize, ovalSize );
                 }
             }
 
-            // Draw adding piece if we have it
+            //ANIMATION OF THE FALLING PIECE
             if ( addingPiece != null ) {
                 gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
                 gbi.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
@@ -176,7 +181,7 @@ public class CompositeBoardTest {
         }
     }
 
-    private static class Piece {
+    public static class Piece {
         public int row, column, x, y;
     }
     
