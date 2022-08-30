@@ -55,7 +55,8 @@ public class StartingWindow implements ActionListener{
 	private void initialize() {
 		
 		frmConnect = new JFrame();
-		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		frmConnect.setTitle("Connect4");
 		frmConnect.setBounds(100, 100, 560, 683);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -94,7 +95,8 @@ public class StartingWindow implements ActionListener{
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
 		panel.add(label);
 		panel.setBounds(0, 0, 544, 644);
