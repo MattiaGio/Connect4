@@ -6,12 +6,13 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 
-public class CompositeBoardTest extends JFrame {
+public class CompositeBoardTest {
     private static int size = 650;
     private static int offset = 10;
     private static int ovalSize = size/7 - offset*2;
     private static int pos = offset/2;
     private static int incr = size/7;
+    private static JFrame CompositeBoardTest;
     private static JMenuBar menuBar;
     private static JMenuItem saveItem;
     private static JMenuItem loadItem;
@@ -27,22 +28,23 @@ public class CompositeBoardTest extends JFrame {
     }
 //
     public CompositeBoardTest() {
-        super( "CompositeBoardTest" );
-        setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        //super( "CompositeBoardTest" );
+    	CompositeBoardTest = new JFrame();
+        CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
+        CompositeBoardTest.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
         Board board = new Board();
-        getContentPane().add( board );
+        CompositeBoardTest.getContentPane().add( board );
 //<<<<<<< HEAD
         board.setLayout(null);
-        setSize( size-90, size+34 );
+        CompositeBoardTest.setSize( size-90, size+34 );
 //=======
-        setSize( 560, 706 );
+        CompositeBoardTest.setSize( 560, 706 );
 //>>>>>>> branch 'main' of https://github.com/MattiaGio/Connect4.git
-        setVisible( true );
-        setResizable(false);
-        setLocationRelativeTo( null );
-        setJMenuBar(menuBar);
+        CompositeBoardTest.setVisible( true );
+        CompositeBoardTest.setResizable(false);
+        CompositeBoardTest.setLocationRelativeTo( null );
+        CompositeBoardTest.setJMenuBar(menuBar);
         
     }
 
@@ -159,7 +161,7 @@ public class CompositeBoardTest extends JFrame {
     		}
         	if(e.getSource()==exitItem) {
     			JOptionPane.showMessageDialog(null, "You will exit the game without saving", "Exit", JOptionPane.ERROR_MESSAGE);
-    			//CompositeBoardTest.dispose();
+    			CompositeBoardTest.dispose();
         	}
             if ( addingPiece != null ) {
                 addingPiece.y += 5;
