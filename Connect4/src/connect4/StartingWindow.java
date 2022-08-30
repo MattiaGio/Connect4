@@ -20,6 +20,8 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import java.awt.SystemColor;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
 
 
 
@@ -63,8 +65,8 @@ public class StartingWindow implements ActionListener{
 		
 		frmConnect = new JFrame();
 		frmConnect.setBackground(SystemColor.text);
-		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
-		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		frmConnect.setTitle("Connect4");
 		frmConnect.setBounds(100, 100, 560, 706);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -101,18 +103,24 @@ public class StartingWindow implements ActionListener{
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBorder(null);
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(181, 180, 227, 92);
+		panel.add(panel_1);
+		
 		JButton loadGameButton = new JButton("Load Game");
-		loadGameButton.setBounds(297, 466, 122, 45);
+		loadGameButton.setBounds(294, 489, 122, 45);
 		panel.add(loadGameButton);
 		loadGameButton.setFocusable(false);
 		
 		StartGameBtn = new JButton("New Game");
-		StartGameBtn.setBounds(136, 466, 122, 45);
+		StartGameBtn.setBounds(136, 489, 122, 45);
 		panel.add(StartGameBtn);
 		StartGameBtn.setFocusable(false);
 		StartGameBtn.addActionListener(this);
-		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
-		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
 		panel.add(label);
 		panel.setBounds(0, 0, 544, 644);

@@ -16,6 +16,7 @@ public class CompositeBoardTest extends JFrame {
     private static JMenuItem saveItem;
     private static JMenuItem loadItem;
     private static JMenuItem aboutItem;
+    private static JMenuItem exitItem;
     
 
     public static void main( String[] args ) throws Exception {
@@ -70,6 +71,7 @@ public class CompositeBoardTest extends JFrame {
     		
     		loadItem = new JMenuItem("Load");
     		saveItem = new JMenuItem("Save");
+    		exitItem = new JMenuItem("Exit");
     		
     		aboutItem = new JMenuItem("About");
     		
@@ -78,10 +80,12 @@ public class CompositeBoardTest extends JFrame {
     		menuBar.add(help);
     		gameSettings.add(loadItem);
     		gameSettings.add(saveItem);
+    		gameSettings.add(exitItem);
     		help.add(aboutItem);
     		
     		loadItem.addActionListener(this);
     		saveItem.addActionListener(this);
+    		exitItem.addActionListener(this);
     		aboutItem.addActionListener(this);
     		//AGGIUNGERE SALVATAGGIO E CARICAMENTO
         }
@@ -153,6 +157,10 @@ public class CompositeBoardTest extends JFrame {
         	if(e.getSource()==aboutItem) {
     			JOptionPane.showMessageDialog(null, "Connect4 Game: v.1.0 \nMade by: JvckDL & MattiaGio", "About", JOptionPane.INFORMATION_MESSAGE);
     		}
+        	if(e.getSource()==exitItem) {
+    			JOptionPane.showMessageDialog(null, "You will exit the game without saving", "Exit", JOptionPane.ERROR_MESSAGE);
+    			//CompositeBoardTest.dispose();
+        	}
             if ( addingPiece != null ) {
                 addingPiece.y += 5;
                 int row = ( addingPiece.y - pos )/incr + 1;
