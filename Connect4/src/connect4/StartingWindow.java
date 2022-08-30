@@ -6,6 +6,10 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -14,6 +18,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import java.awt.SystemColor;
 
 
 
@@ -23,6 +29,7 @@ public class StartingWindow implements ActionListener{
 	private JTextField NamePlayer1;
 	private JTextField NamePlayer2;
 	private JButton StartGameBtn;
+	private JMenuItem aboutItem;
 
 	
 	/**
@@ -55,25 +62,23 @@ public class StartingWindow implements ActionListener{
 	private void initialize() {
 		
 		frmConnect = new JFrame();
-		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		frmConnect.setBackground(SystemColor.text);
+		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		frmConnect.setTitle("Connect4");
-		frmConnect.setBounds(100, 100, 560, 683);
+		frmConnect.setBounds(100, 100, 560, 706);
 		frmConnect.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmConnect.getContentPane().setLayout(null);
 		frmConnect.setLocationRelativeTo( null );
+		frmConnect.setBackground(Color.YELLOW);
+
+		
 		
 		JLabel Player2Label = new JLabel("Player 2:");
 		Player2Label.setForeground(new Color(0, 255, 0));
 		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
 		Player2Label.setBounds(194, 241, 59, 14);
 		frmConnect.getContentPane().add(Player2Label);
-		
-		StartGameBtn = new JButton("New Game");
-		StartGameBtn.setBounds(211, 465, 122, 45);
-		frmConnect.getContentPane().add(StartGameBtn);
-		StartGameBtn.setFocusable(false);
-		StartGameBtn.addActionListener(this);
 		
 		NamePlayer1 = new JTextField();
 		NamePlayer1.setBounds(263, 196, 139, 20);
@@ -95,7 +100,18 @@ public class StartingWindow implements ActionListener{
 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		
+		JButton loadGameButton = new JButton("Load Game");
+		loadGameButton.setBounds(297, 466, 122, 45);
+		panel.add(loadGameButton);
+		loadGameButton.setFocusable(false);
+		
+		StartGameBtn = new JButton("New Game");
+		StartGameBtn.setBounds(136, 466, 122, 45);
+		panel.add(StartGameBtn);
+		StartGameBtn.setFocusable(false);
+		StartGameBtn.addActionListener(this);
+		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
 		panel.add(label);
@@ -103,16 +119,39 @@ public class StartingWindow implements ActionListener{
 		frmConnect.getContentPane().add(panel);
 		
 		
+		//menu bar
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBackground(SystemColor.menu);
+		menuBar.setForeground(new Color(255, 255, 255));
+		JMenu help = new JMenu("Help");
+		aboutItem = new JMenuItem("About");
+		
+		menuBar.add(help);
+		help.add(aboutItem);
+		
+		
+		aboutItem.addActionListener(this);
+		
+		
+		frmConnect.setJMenuBar(menuBar);
+		
 	}
+	
+	
+	
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		frmConnect.dispose();
+		if(e.getSource()==aboutItem) {
+			JOptionPane.showMessageDialog(null, "Connect4 Game: v.1.0 \nMade by: JvckDL & MattiaGio", "About", JOptionPane.INFORMATION_MESSAGE);
+		}
 		
 		if(e.getSource()==StartGameBtn) {
 			
 			CompositeBoardTest myBoard = new CompositeBoardTest();
+			frmConnect.dispose();
 		}
 		
 	}

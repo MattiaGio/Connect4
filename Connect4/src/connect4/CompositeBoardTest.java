@@ -12,6 +12,10 @@ public class CompositeBoardTest extends JFrame {
     private static int ovalSize = size/7 - offset*2;
     private static int pos = offset/2;
     private static int incr = size/7;
+    private static JMenuBar menuBar;
+    private static JMenuItem saveItem;
+    private static JMenuItem loadItem;
+    private static JMenuItem aboutItem;
     
 
     public static void main( String[] args ) throws Exception {
@@ -32,11 +36,12 @@ public class CompositeBoardTest extends JFrame {
         board.setLayout(null);
         setSize( size-90, size+34 );
 //=======
-        setSize( 560, 683 );
+        setSize( 560, 706 );
 //>>>>>>> branch 'main' of https://github.com/MattiaGio/Connect4.git
         setVisible( true );
         setResizable(false);
         setLocationRelativeTo( null );
+        setJMenuBar(menuBar);
         
     }
 
@@ -56,6 +61,29 @@ public class CompositeBoardTest extends JFrame {
                    
                 }
             });
+            
+            menuBar = new JMenuBar();
+    		menuBar.setBackground(SystemColor.menu);
+    		menuBar.setForeground(new Color(255, 255, 255));
+    		JMenu gameSettings = new JMenu("Game Settings");
+    		JMenu help = new JMenu("Help");
+    		
+    		loadItem = new JMenuItem("Load");
+    		saveItem = new JMenuItem("Save");
+    		
+    		aboutItem = new JMenuItem("About");
+    		
+    
+    		menuBar.add(gameSettings);
+    		menuBar.add(help);
+    		gameSettings.add(loadItem);
+    		gameSettings.add(saveItem);
+    		help.add(aboutItem);
+    		
+    		loadItem.addActionListener(this);
+    		saveItem.addActionListener(this);
+    		aboutItem.addActionListener(this);
+    		//AGGIUNGERE SALVATAGGIO E CARICAMENTO
         }
 
         protected void paintComponent( Graphics g ) {
@@ -122,6 +150,9 @@ public class CompositeBoardTest extends JFrame {
         }
 //commento di prova
         public void actionPerformed( ActionEvent e ) {
+        	if(e.getSource()==aboutItem) {
+    			JOptionPane.showMessageDialog(null, "Connect4 Game: v.1.0 \nMade by: JvckDL & MattiaGio", "About", JOptionPane.INFORMATION_MESSAGE);
+    		}
             if ( addingPiece != null ) {
                 addingPiece.y += 5;
                 int row = ( addingPiece.y - pos )/incr + 1;
@@ -138,4 +169,5 @@ public class CompositeBoardTest extends JFrame {
     private static class Piece {
         public int row, column, x, y;
     }
+    
 }
