@@ -119,14 +119,18 @@ public class CompositeBoardTest {
             gbi.fillRect( 0, 0, w, h );
 
             // Draw pieces or holes
-            gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
+            //gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
+            gbi.setColor(Color.RED);
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
                 	//DISCS COLOR
-                    if ( pieces[row][column] == 1 ) {
-                        gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, .999f ) );
-                    } else {//FILLS THE WHITE HOLES
+                    if ( pieces[row][column] == 1) {
+                    		gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, 1.0f ) );
+                    		
+                    } else{//FILLS THE WHITE HOLES
+                    	
                         gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.CLEAR, 0.5f ) );
+      
                     }
                     gbi.fillOval( incr*column+pos, incr*row+pos, ovalSize, ovalSize );
                 }
