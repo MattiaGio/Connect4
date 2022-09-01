@@ -27,30 +27,15 @@ import javax.swing.border.BevelBorder;
 
 public class StartingWindow implements ActionListener{
 
-	private JFrame frmConnect;
-	private JTextField NamePlayer1;
-	private JTextField NamePlayer2;
-	private JButton StartGameBtn;
-	private JMenuItem aboutItem;
+	protected JFrame frmConnect;
+	protected JTextField NamePlayer1;
+	protected JTextField NamePlayer2;
+	protected static String NamePla1;
+	protected static String NamePla2;
+	protected JButton StartGameBtn;
+	protected JMenuItem aboutItem;
 
 	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StartingWindow window = new StartingWindow();
-					window.frmConnect.setVisible(true);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the application.
 	 */
@@ -98,21 +83,25 @@ public class StartingWindow implements ActionListener{
 		
 				
 				
-				JLabel Player2Label = new JLabel("Player 2:");
-				Player2Label.setBounds(173, 260, 59, 14);
-				panel.add(Player2Label);
-				Player2Label.setForeground(new Color(0, 255, 0));
-				Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
+		JLabel Player2Label = new JLabel("Player 2:");
+		Player2Label.setBounds(173, 260, 59, 14);
+		panel.add(Player2Label);
+		Player2Label.setForeground(new Color(0, 255, 0));
+		Player2Label.setFont(new Font("Tahoma", Font.BOLD, 13));
 		
 		NamePlayer2 = new JTextField();
 		NamePlayer2.setBounds(242, 258, 139, 20);
 		panel.add(NamePlayer2);
 		NamePlayer2.setColumns(10);
 		
+		NamePla2 = NamePlayer2.getText();
+		
 		NamePlayer1 = new JTextField();
 		NamePlayer1.setBounds(242, 221, 139, 20);
 		panel.add(NamePlayer1);
 		NamePlayer1.setColumns(10);
+		NamePla1 = NamePlayer1.getText();
+		
 		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
@@ -140,8 +129,13 @@ public class StartingWindow implements ActionListener{
 	}
 	
 	
+	public String getNamePla2(String Name) {
+		return NamePla2;
+	}
 	
-	
+	public String getNamePla1(String Name) {
+		return NamePla1;
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

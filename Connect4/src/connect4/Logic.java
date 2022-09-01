@@ -17,9 +17,9 @@ public class Logic {
 		return player1Turn;
 	}
 	
-	public Logic(String player1Name, String player2Name) {
-		this.player1 = player1Name;
-		this.player2 = player2Name;
+	public Logic() {
+		this.player1 = StartingWindow.NamePla1;
+		this.player2 = StartingWindow.NamePla2;
 	}
 	
 	
@@ -111,5 +111,12 @@ public class Logic {
         }
         return false;
     }
+
+	public void reset(int rows, int columns) {
+		// TODO Auto-generated method stub
+		this.board = new BoardLogic(rows, columns);
+		player1Turn = true;
+		
+	}
 	
 }

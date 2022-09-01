@@ -20,16 +20,15 @@ public class CompositeBoardTest {
     private static JMenuItem aboutItem;
     private static JMenuItem exitItem;
     
+    private Logic game;
+    private static int rows;
+    private static int columns;
 
-    public static void main( String[] args ) throws Exception {
-        SwingUtilities.invokeLater( new Runnable() {
-            public void run() { new CompositeBoardTest(); }
-            
-        } );
-    }
+    
 //
     public CompositeBoardTest() {
-        //super( "CompositeBoardTest" );
+        this.game = new Logic();
+		//super( "CompositeBoardTest" );
     	CompositeBoardTest = new JFrame();
         CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
         CompositeBoardTest.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -146,6 +145,8 @@ public class CompositeBoardTest {
             g2d.drawImage(buffImg, null, 0, 0);
 
 //          g2d.setComposite( comp );
+            
+           
         }
 
         public void addPiece( int column ) {
@@ -195,4 +196,22 @@ public class CompositeBoardTest {
         public int row, column, x, y;
     }
     
+    
+   /* private void updater(Graphics2D gbi) {
+    	boolean player1turn = game.player1Turn;
+    	if (player1turn == false) {
+    		gbi.setColor(Color.YELLOW);
+    	}else {
+    		gbi.setColor(Color.RED);
+    	}
+    	if(game.checkForWinnerInGUI(col)) {
+            JOptionPane.showMessageDialog(null, "You have won!");
+            int reply = JOptionPane.showConfirmDialog(null, "Would you like to play again?", null, JOptionPane.YES_NO_OPTION);
+            if(reply == JOptionPane.YES_OPTION) {
+                System.out.println("Trying to play again...");
+                game.reset(6, 7);
+            } else {
+                System.exit(0);
+            }
+    }*/
 }

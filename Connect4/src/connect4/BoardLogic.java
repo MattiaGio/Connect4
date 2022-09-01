@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class BoardLogic {
 	
-	private int rows;
-	private int columns;
+	private static int rows;
+	private static int columns;
 	
 	Pieces [][]grid;
 	
