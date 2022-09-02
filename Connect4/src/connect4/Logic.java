@@ -8,6 +8,8 @@ public class Logic {
 
 	protected String player1;
 	protected String player2;
+	protected String color1 = "RED";
+	protected String color2 = "YELLOW";
 	
 	protected BoardLogic board;
 	
@@ -23,10 +25,14 @@ public class Logic {
 	}
 	
 	
-	public int round(int col) {
+	public boolean round(int col) {
 		//String color = is1Playing ? color1 : color2;
+		boolean success = false;
 		
-		int row = board.addPiece(col, player1);
+		String color = player1Turn ? color1 : color2;
+		
+		success = board.addPiece(col, color);
+		
 		
 		if(row != -1) player1Turn = !player1Turn;
 		
