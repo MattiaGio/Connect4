@@ -14,6 +14,8 @@ public class Logic {
 	protected BoardLogic board;
 	
 	protected boolean player1Turn = true;
+	protected int rows = 7;
+	protected int columns = 6;
 	
 	public boolean player1Turn() {
 		return player1Turn;
@@ -25,13 +27,11 @@ public class Logic {
 	}
 	
 	
-	public boolean round(int col) {
-		//String color = is1Playing ? color1 : color2;
-		boolean success = false;
+	public int round(int col) {
 		
 		String color = player1Turn ? color1 : color2;
 		
-		success = board.addPiece(col, color);
+		int row = board.addPiece(col, color);
 		
 		
 		if(row != -1) player1Turn = !player1Turn;
@@ -65,8 +65,7 @@ public class Logic {
 
                 // check downwards
                 for(int winRow = row + 1; winRow < rows; winRow++) {
-                	//ho messo color 1 ma deve essere specificato
-                    if(Board[winRow][col].getColor1().equals(winningPlayer)) {
+                    if(Board[winRow][col].getColor().equals(winningPlayer)) {
                         winningStreak--;
                         if(winningStreak == 0) return true;
                     } else winningStreak = 3;
@@ -78,7 +77,7 @@ public class Logic {
                     if(winCol < 0) continue;
                     if(winCol >= columns) break;
 
-                    if(Board[row][winCol] != null && Board[row][winCol].getColor2().equals(winningPlayer)) {
+                    if(Board[row][winCol] != null && Board[row][winCol].getColor().equals(winningPlayer)) {
                         winningStreak--;
                         if(winningStreak == 0) return true;
                     } else winningStreak = 4;
@@ -111,7 +110,7 @@ public class Logic {
             }
 
             //attenzione ai colori anche qua
-            if(Board[winRow][winPla] != null && Board[winRow][winPla].getColor1().equals(winningPlayer)) {
+            if(Board[winRow][winPla] != null && Board[winRow][winPla].getColor().equals(winningPlayer)) {
                 if (--winningStreak == 0) return true;
             } else winningStreak = 4;
         }
@@ -123,6 +122,10 @@ public class Logic {
 		this.board = new BoardLogic(rows, columns);
 		player1Turn = true;
 		
+	}
+	public String setColor(String colors) {
+		String color = colors;
+		return color;
 	}
 	
 }

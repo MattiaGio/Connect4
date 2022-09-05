@@ -50,7 +50,8 @@ public class StartingWindow implements ActionListener{
 		
 		frmConnect = new JFrame();
 		frmConnect.setBackground(SystemColor.text);
-		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Eclipse\\Workspace\\Connect4\\img\\sfondo.jpeg"));
+		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//frmConnect.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		frmConnect.setTitle("Connect4");
 		frmConnect.setBounds(100, 100, 560, 706);
@@ -102,7 +103,8 @@ public class StartingWindow implements ActionListener{
 		NamePlayer1.setColumns(10);
 		NamePla1 = NamePlayer1.getText();
 		
-		JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
+		JLabel label = new JLabel(new ImageIcon("D:\\\\Eclipse\\\\Workspace\\\\Connect4\\\\img\\\\sfondo.jpeg"));
+		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		//JLabel label = new JLabel(new ImageIcon("C:\\Users\\paffo\\git\\Connect4\\Connect4\\img\\sfondo.jpeg"));
 		label.setBounds(0, 0, 544, 644);
 		panel.add(label);

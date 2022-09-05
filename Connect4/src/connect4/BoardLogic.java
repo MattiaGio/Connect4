@@ -44,7 +44,7 @@ public class BoardLogic {
 					if(grid[row][colToAdd] == null) {
 						grid[row][colToAdd] = new Pieces();
 						//qui sto settando a 1 solo colore potrebbe non funzionare
-						grid[row][colToAdd].setColor1(color);
+						grid[row][colToAdd].setColor(color);
 						addedThePiece = true;
 						addedRow = row;
 						break;

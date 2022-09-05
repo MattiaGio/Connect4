@@ -13,6 +13,7 @@ public class CompositeBoardTest {
     private static int pos = offset/2;
     private static int incr = size/7;
     private static JFrame CompositeBoardTest;
+    private static JPanel CompositePanel;
     //private static JPanel Board;
     private static JMenuBar menuBar;
     private static JMenuItem saveItem;
@@ -20,19 +21,31 @@ public class CompositeBoardTest {
     private static JMenuItem aboutItem;
     private static JMenuItem exitItem;
     
-    private Logic game;
+    private static Logic game;
     private static int rows;
     private static int columns;
-
     
+    //fare updater
+    
+    private void updater() {
+    	boolean player1Turn = game.player1Turn;
+    	if(player1Turn == true) {
+    		//mettere in alto un banner con nome player
+    		
+    	}
+    
+    }
 //
     public CompositeBoardTest() {
         this.game = new Logic();
 		//super( "CompositeBoardTest" );
     	CompositeBoardTest = new JFrame();
-        CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
+        //CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
+    	CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Eclipse\\Workspace\\Connect4\\img\\38753106 (1).jpg"));
         CompositeBoardTest.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
+        CompositePanel = new JPanel();
+        CompositeBoardTest.add(CompositePanel);
         Board board = new Board();
         CompositeBoardTest.getContentPane().add( board );
 //<<<<<<< HEAD
@@ -92,9 +105,22 @@ public class CompositeBoardTest {
     		saveItem.addActionListener(this);
     		exitItem.addActionListener(this);
     		aboutItem.addActionListener(this);
-    		//AGGIUNGERE SALVATAGGIO E CARICAMENTO
+    		//FAR FUNZIONARE SALVATAGGIO E CARICAMENTO
         }
 
+        
+        protected void paintPlayerName(Graphics g) {
+        	if(game.player1Turn == true) {
+        		g.setColor(Color.RED);
+        		g.fillRect(25, 25, 560, 25);
+        	}else {
+        		g.setColor(Color.YELLOW);
+        		g.fillRect(25, 25, 560, 25);
+        	}
+        	
+        	
+        }
+        
         protected void paintComponent( Graphics g ) {
             super.paintComponent( g );
 
@@ -106,7 +132,9 @@ public class CompositeBoardTest {
             int h = d.height;
 
             BufferedImage buffImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+            BufferedImage buffImg2 = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
             Graphics2D gbi = buffImg.createGraphics();
+            Graphics2D gbi2 = buffImg.createGraphics();
 
             // Clear area
             g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
@@ -120,17 +148,28 @@ public class CompositeBoardTest {
             // Draw pieces or holes
             //gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
             gbi.setColor(Color.RED);
+            gbi2.setColor(Color.YELLOW);
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
                 	//DISCS COLOR
-                    if ( pieces[row][column] == 1) {
+                    if ( pieces[row][column] == 1 && game.player1Turn == true) {
                     		gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, 1.0f ) );
+                    		game.player1Turn = false;
+                    		//gbi.setColor(Color.YELLOW);
                     		
-                    } else{//FILLS THE WHITE HOLES
+                    }else if ( pieces[row][column] == 1 && game.player1Turn == false) {
+                    	//gbi.setColor(Color.YELLOW);
+                		gbi2.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, 1.0f ) );
+                		game.player1Turn = true;
+                		//gbi.setColor(Color.RED);
+                		
+                    }else{//FILLS THE WHITE HOLES
                     	
                         gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.CLEAR, 0.5f ) );
+                        gbi2.setComposite( AlphaComposite.getInstance( AlphaComposite.CLEAR, 0.5f ) );
       
                     }
+                    gbi.fillOval( incr*column+pos, incr*row+pos, ovalSize, ovalSize );
                     gbi.fillOval( incr*column+pos, incr*row+pos, ovalSize, ovalSize );
                 }
             }
@@ -139,6 +178,8 @@ public class CompositeBoardTest {
             if ( addingPiece != null ) {
                 gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
                 gbi.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
+                gbi2.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
+                gbi2.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
             }
 
             // Draws the buffered image.
