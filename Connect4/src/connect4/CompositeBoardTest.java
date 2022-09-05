@@ -40,12 +40,14 @@ public class CompositeBoardTest {
         this.game = new Logic();
 		//super( "CompositeBoardTest" );
     	CompositeBoardTest = new JFrame();
-        //CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
-    	CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Eclipse\\Workspace\\Connect4\\img\\38753106 (1).jpg"));
+        CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\matti\\git\\Connect4\\Connect4\\img\\38753106 (1).jpg"));
+    	//CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Eclipse\\Workspace\\Connect4\\img\\38753106 (1).jpg"));
         CompositeBoardTest.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
         CompositePanel = new JPanel();
-        CompositeBoardTest.add(CompositePanel);
+        CompositeBoardTest.getContentPane().add(CompositePanel);
+        CompositePanel.setLayout(null);
+        //CompositeBoardTest.add(CompositePanel);
         Board board = new Board();
         CompositeBoardTest.getContentPane().add( board );
 //<<<<<<< HEAD
@@ -109,36 +111,27 @@ public class CompositeBoardTest {
         }
 
         
-        protected void paintPlayerName(Graphics g) {
-        	if(game.player1Turn == true) {
-        		g.setColor(Color.RED);
-        		g.fillRect(25, 25, 560, 25);
-        	}else {
-        		g.setColor(Color.YELLOW);
-        		g.fillRect(25, 25, 560, 25);
-        	}
-        	
-        	
-        }
         
         protected void paintComponent( Graphics g ) {
             super.paintComponent( g );
 
-            Graphics2D g2d = (Graphics2D) g;
+            /*Graphics2D g2d = (Graphics2D) g;
             Composite comp = g2d.getComposite();
-
+			*/
             Dimension d = getSize();
             int w = d.width;
             int h = d.height;
 
             BufferedImage buffImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-            BufferedImage buffImg2 = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-            Graphics2D gbi = buffImg.createGraphics();
-            Graphics2D gbi2 = buffImg.createGraphics();
+            //BufferedImage buffImg2 = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+            //Graphics2D gbi = buffImg.createGraphics();
+            //Graphics2D gbi2 = buffImg.createGraphics();
 
             // Clear area
-            g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
-            g2d.fillRect( 0, 0, w, h );
+            g.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
+            g.fillRect( 0, 0, w, h );
+           // g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
+            //g2d.fillRect( 0, 0, w, h );
 
             // Draw screen
             //gbi.setColor( Color.YELLOW );
