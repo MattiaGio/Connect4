@@ -13,7 +13,7 @@ public class CompositeBoardTest {
     private static int pos = offset/2;
     private static int incr = size/7;
     private static JFrame CompositeBoardTest;
-    private static JPanel CompositePanel;
+    static CompositePanel CompositePanel;
     //private static JPanel Board;
     private static JMenuBar menuBar;
     private static JMenuItem saveItem;
@@ -26,15 +26,6 @@ public class CompositeBoardTest {
     private static int columns;
     
     //fare updater
-    
-    private void updater() {
-    	boolean player1Turn = game.player1Turn;
-    	if(player1Turn == true) {
-    		//mettere in alto un banner con nome player
-    		
-    	}
-    
-    }
 //
     public CompositeBoardTest() {
         this.game = new Logic();
@@ -44,8 +35,10 @@ public class CompositeBoardTest {
     	//CompositeBoardTest.setIconImage(Toolkit.getDefaultToolkit().getImage("D:\\Eclipse\\Workspace\\Connect4\\img\\38753106 (1).jpg"));
         CompositeBoardTest.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         
-        CompositePanel = new JPanel();
-        CompositeBoardTest.getContentPane().add(CompositePanel);
+        CompositePanel = new CompositePanel();
+        CompositeBoardTest.add(CompositePanel);
+        CompositeBoardTest.pack();
+        //CompositeBoardTest.getContentPane().add(CompositePanel);
         CompositePanel.setLayout(null);
         //CompositeBoardTest.add(CompositePanel);
         Board board = new Board();
@@ -54,7 +47,7 @@ public class CompositeBoardTest {
         board.setLayout(null);
         CompositeBoardTest.setSize( size-90, size+34 );
 //=======
-        CompositeBoardTest.setSize( 560, 706 );
+        //CompositeBoardTest.setSize( 560, 706 );
 //>>>>>>> branch 'main' of https://github.com/MattiaGio/Connect4.git
         CompositeBoardTest.setVisible( true );
         CompositeBoardTest.setResizable(false);
@@ -113,40 +106,40 @@ public class CompositeBoardTest {
         
         
         protected void paintComponent( Graphics g ) {
-            super.paintComponent( g );
+            /*super.paintComponent( g );
 
-            /*Graphics2D g2d = (Graphics2D) g;
+            Graphics2D g2d = (Graphics2D) g;            
             Composite comp = g2d.getComposite();
-			*/
+            
+			
             Dimension d = getSize();
             int w = d.width;
             int h = d.height;
 
             BufferedImage buffImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-            //BufferedImage buffImg2 = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-            //Graphics2D gbi = buffImg.createGraphics();
-            //Graphics2D gbi2 = buffImg.createGraphics();
+            BufferedImage buffImg2 = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D gbi = buffImg.createGraphics();
+            Graphics2D gbi2 = buffImg.createGraphics();
 
             // Clear area
-            g.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
-            g.fillRect( 0, 0, w, h );
+            g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
+            g2d.fillRect( 0, 0, w, h );
            // g2d.setColor( Color.WHITE );//CAMBIA IL COLORE DELLO SFONDO
             //g2d.fillRect( 0, 0, w, h );
 
             // Draw screen
-            //gbi.setColor( Color.YELLOW );
-            gbi.setColor( Color.BLUE ); //CAMBIA IL COLORE DELLA GRIGLIA
-            gbi.fillRect( 0, 0, w, h );
+            g2d.setColor( Color.BLUE ); //CAMBIA IL COLORE DELLA GRIGLIA
+            g2d.fillRect( 0, 0, w, h );
 
             // Draw pieces or holes
             //gbi.setColor( Color.RED ); //CAMBIA IL COLORE DEL DISCHETTO
             gbi.setColor(Color.RED);
-            gbi2.setColor(Color.YELLOW);
+            //g2.setColor(Color.YELLOW);
             for ( int row = 0 ; row < 7 ; row++ ) {
                 for ( int column = 0 ; column < 6 ; column++ ) {
                 	//DISCS COLOR
                     if ( pieces[row][column] == 1 && game.player1Turn == true) {
-                    		gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.SRC_OVER, 1.0f ) );
+                    		gbi.setComposite(AlphaComposite.getInstance( AlphaComposite.SRC_OVER, 1.0f ) );
                     		game.player1Turn = false;
                     		//gbi.setColor(Color.YELLOW);
                     		
@@ -169,18 +162,17 @@ public class CompositeBoardTest {
 
             //ANIMATION OF THE FALLING PIECE
             if ( addingPiece != null ) {
-                gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
-                gbi.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
-                gbi2.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
-                gbi2.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
+                CompositePanel.gbi.setComposite( AlphaComposite.getInstance( AlphaComposite.DST_OVER, 1.0f ) );
+                CompositePanel.gbi.fillOval( addingPiece.x, addingPiece.y, ovalSize, ovalSize );
+               
             }
 
             // Draws the buffered image.
-            g2d.drawImage(buffImg, null, 0, 0);
+            CompositePanel.g2d.drawImage(buffImg, null, 0, 0);
 
 //          g2d.setComposite( comp );
             
-           
+     */      
         }
 
         public void addPiece( int column ) {
